@@ -1,0 +1,20 @@
+# render.yaml
+services:
+  - type: web
+    name: rag-chat-app
+    env: python
+    buildCommand: |
+      pip3 install --upgrade pip
+      pip3 install -r requirements.txt
+      python download_data.py
+    startCommand: |
+      streamlit run streamlit_app.py --server.port=$PORT --server.address=0.0.0.0 --server.enableCORS=false --server.enableXsrfProtection=false
+    plan: free
+    healthCheckPath: /_stcore/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.18
+      - key: STREAMLIT_SERVER_PORT
+        value: 8501
+      - key: OLLAMA_HOST
+        value: 0.0.0.0:11434
