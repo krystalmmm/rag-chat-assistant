@@ -1,0 +1,47 @@
+cat > .gitignore << 'EOF'
+# Virtual Environment - NEVER commit this!
+rag_env/
+env/
+venv/
+.venv/
+ENV/
+
+# RAG Database and backup files
+rag_vector_database/
+rag_database_backup.json
+*_backup.json
+*.npy
+*.pkl
+*.db
+
+# Test files and data directories
+tests/
+data/
+test_faiss_*/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+
+# Large binary files
+*.dylib
+*.bin
+*.so.*
+EOF
